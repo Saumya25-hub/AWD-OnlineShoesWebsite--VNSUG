@@ -16,7 +16,7 @@ import {
 import { useAuth } from '../../context/AuthContext';
 
 const AdminLayout = () => {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
   const handleAdminLogout = () => {
@@ -25,24 +25,13 @@ const AdminLayout = () => {
   };
 
   return (
-    <div className="admin-layout" style={{ minHeight: '100vh', backgroundColor: '#0f172a' }}>
+    <div className="admin-layout" style={{ minHeight: '100vh' }}>
       {/* Sidebar */}
       <aside className="admin-sidebar">
-        <div style={{ paddingBottom: '20px', marginBottom: '20px', borderBottom: '1px solid #1e293b' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-            <ShieldCheck size={16} color="#38bdf8" />
-            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#38bdf8', fontWeight: 700 }}>
-              Admin Console
-            </span>
-          </div>
-          <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ffffff' }}>
-            StepUp Admin
-          </div>
-          {user && (
-            <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '4px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              👤 {user.email || user.name}
-            </div>
-          )}
+        <div style={{ paddingBottom: '18px', marginBottom: '18px', borderBottom: '1px solid #1e293b' }}>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#ffffff', margin: 0 }}>
+            Admin Panel
+          </h2>
         </div>
 
         <ul className="admin-nav">
@@ -120,13 +109,13 @@ const AdminLayout = () => {
             </NavLink>
           </li>
 
-          <li style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid #1e293b' }}>
-            <Link to="/" className="admin-nav-item" style={{ color: '#94a3b8' }}>
+          <li style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid #1e293b' }}>
+            <Link to="/" className="admin-nav-item">
               <ArrowLeft size={16} />
-              <span>Preview Store</span>
+              <span>Back to Store</span>
             </Link>
           </li>
-          <li style={{ marginTop: '8px' }}>
+          <li>
             <button
               type="button"
               onClick={handleAdminLogout}
@@ -135,13 +124,12 @@ const AdminLayout = () => {
                 width: '100%',
                 background: 'none',
                 border: 'none',
-                color: '#f87171',
                 cursor: 'pointer',
                 textAlign: 'left'
               }}
             >
               <LogOut size={16} />
-              <span>Admin Logout</span>
+              <span>Logout</span>
             </button>
           </li>
         </ul>

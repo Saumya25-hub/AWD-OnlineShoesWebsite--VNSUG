@@ -171,7 +171,7 @@ const Checkout = () => {
       <div className="section-header">
         <div>
           <h2>Complete Your Order</h2>
-          <p>Provide your delivery address and pay securely via Razorpay Test Mode</p>
+          <p>Provide your delivery address to complete your purchase</p>
         </div>
       </div>
 
@@ -258,7 +258,7 @@ const Checkout = () => {
               </div>
             </div>
 
-            {/* Razorpay Standard Checkout Method Card */}
+            {/* Simple Payment Method Option */}
             <h3 style={{ fontSize: '1.2rem', fontWeight: 800, margin: '24px 0 16px', color: 'var(--primary)' }}>
               2. Payment Method
             </h3>
@@ -267,36 +267,22 @@ const Checkout = () => {
               border: '1px solid #e2e8f0',
               background: '#f8fafc',
               borderRadius: 'var(--radius)',
-              padding: '18px 20px',
-              marginBottom: '24px'
+              padding: '16px 18px',
+              marginBottom: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px'
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ fontSize: '1.3rem' }}>💳</span>
-                  <strong style={{ color: 'var(--primary)', fontSize: '0.98rem' }}>
-                    Razorpay Standard Checkout
-                  </strong>
-                </div>
-                <span style={{
-                  background: '#dbeafe',
-                  color: '#1e40af',
-                  fontSize: '0.72rem',
-                  fontWeight: 800,
-                  padding: '3px 8px',
-                  borderRadius: '999px'
-                }}>
-                  TEST MODE
-                </span>
-              </div>
-              <p style={{ margin: '0 0 12px 0', fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                When you click <strong>Pay with Razorpay</strong>, the official Razorpay Checkout window will open. You can test using:
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '0.82rem', color: 'var(--text-main)' }}>
-                <div>✓ <strong>UPI</strong> (success@razorpay / failure@razorpay)</div>
-                <div>✓ <strong>Credit / Debit Cards</strong> (Test Cards)</div>
-                <div>✓ <strong>Net Banking</strong> (All Major Indian Banks)</div>
-                <div>✓ <strong>Wallets</strong> (Test Wallets)</div>
-              </div>
+              <input
+                type="radio"
+                id="razorpay"
+                name="payment"
+                defaultChecked
+                style={{ width: '18px', height: '18px', accentColor: 'var(--accent)', cursor: 'pointer' }}
+              />
+              <label htmlFor="razorpay" style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--primary)', cursor: 'pointer' }}>
+                Online Payment (Razorpay — UPI / Cards / Net Banking)
+              </label>
             </div>
           </form>
         </div>
@@ -351,7 +337,7 @@ const Checkout = () => {
             </div>
 
             <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-              <ShieldCheck size={16} color="var(--accent)" /> 100% Secure Razorpay Test Checkout
+              <ShieldCheck size={16} color="var(--accent)" /> 100% Secure Payment Checkout
             </div>
           </div>
         </div>

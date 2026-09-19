@@ -1,0 +1,6 @@
+# 1. Start Backend (Runs on http://localhost:5000)
+cd D:\SACMA-SEM5\AWD-OnlineShoesWebsite\backend
+node server.js
+# 2. Start Frontend (Runs on http://localhost:5173)
+cd D:\SACMA-SEM5\AWD-OnlineShoesWebsite\frontend
+npm.cmd run dev

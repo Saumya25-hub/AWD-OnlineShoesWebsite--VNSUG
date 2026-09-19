@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60" width="120" height="60">
+  <!-- Converse Star Circle -->
+  <circle cx="60" cy="22" r="16" fill="none" stroke="#111827" stroke-width="2" />
+  <!-- 5-point star -->
+  <polygon points="60,11 63.5,18 71,19 65.5,24.5 67,32 60,28 53,32 54.5,24.5 49,19 56.5,18" fill="#111827" />
+  <text x="60" y="52" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="10" letter-spacing="2" fill="#111827">CONVERSE</text>
+</svg>

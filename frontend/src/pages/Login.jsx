@@ -5,8 +5,9 @@ import { useAuth } from '../context/AuthContext';
 import CaptchaBox from '../components/CaptchaBox';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // Pre-filled customer credentials
+  const [email, setEmail] = useState('rahul@gmail.com');
+  const [password, setPassword] = useState('user123');
   const [captchaData, setCaptchaData] = useState({ captchaToken: '', captchaInput: '' });
   const { login, loading, error, setError } = useAuth();
 
@@ -39,11 +40,6 @@ const Login = () => {
         navigate('/');
       }
     }
-  };
-
-  const handleFillDemo = () => {
-    setEmail('rahul@gmail.com');
-    setPassword('user123');
   };
 
   return (
@@ -108,18 +104,6 @@ const Login = () => {
             <span>{loading ? 'Authenticating...' : 'Sign In'}</span>
           </button>
         </form>
-
-        {/* Demo Customer Shortcut */}
-        <div style={{ marginTop: '24px', paddingTop: '18px', borderTop: '1px solid var(--border)' }}>
-          <button
-            type="button"
-            onClick={handleFillDemo}
-            className="btn btn-sm btn-outline btn-block"
-            style={{ fontSize: '0.82rem', borderColor: 'var(--border)' }}
-          >
-            Fill Demo Customer Credentials
-          </button>
-        </div>
 
         <div style={{ textAlign: 'center', marginTop: '24px', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
           Don't have an account?{' '}

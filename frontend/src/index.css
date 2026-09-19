@@ -1061,9 +1061,43 @@ textarea.form-control {
   border-left: 3px solid var(--accent);
 }
 
+/* Admin Dashboard & Management */
 .admin-content {
   padding: 32px;
   background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.admin-content h1,
+.admin-content h2,
+.admin-content h3,
+.admin-content h4,
+.admin-content h5,
+.admin-content h6,
+.admin-content .section-header h2,
+.admin-content .section-title,
+.admin-content .card-box h2,
+.admin-content .card-box h3,
+.admin-content .card-box h4 {
+  color: #0f172a !important;
+}
+
+.admin-content p,
+.admin-content .section-header p,
+.admin-content .card-box p {
+  color: #64748b !important;
+}
+
+.admin-content .section-header .btn-outline {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+}
+
+.admin-content .section-header .btn-outline:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
 }
 
 .stats-grid {

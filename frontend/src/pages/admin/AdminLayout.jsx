@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Outlet, Link } from 'react-router-dom';
+import { NavLink, Outlet, Link, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
   Layers,
@@ -9,21 +9,40 @@ import {
   Users,
   MessageSquare,
   Star,
-  ArrowLeft
+  ArrowLeft,
+  LogOut,
+  ShieldCheck
 } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 
 const AdminLayout = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleAdminLogout = () => {
+    logout();
+    navigate('/admin/login');
+  };
+
   return (
-    <div className="admin-layout">
+    <div className="admin-layout" style={{ minHeight: '100vh', backgroundColor: '#0f172a' }}>
       {/* Sidebar */}
       <aside className="admin-sidebar">
         <div style={{ paddingBottom: '20px', marginBottom: '20px', borderBottom: '1px solid #1e293b' }}>
-          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b', fontWeight: 700, marginBottom: '6px' }}>
-            Store Administration
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+            <ShieldCheck size={16} color="#38bdf8" />
+            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#38bdf8', fontWeight: 700 }}>
+              Admin Console
+            </span>
           </div>
           <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ffffff' }}>
-            Admin Panel
+            StepUp Admin
           </div>
+          {user && (
+            <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '4px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              👤 {user.email || user.name}
+            </div>
+          )}
         </div>
 
         <ul className="admin-nav">
@@ -104,8 +123,26 @@ const AdminLayout = () => {
           <li style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid #1e293b' }}>
             <Link to="/" className="admin-nav-item" style={{ color: '#94a3b8' }}>
               <ArrowLeft size={16} />
-              <span>Return to Store</span>
+              <span>Preview Store</span>
             </Link>
+          </li>
+          <li style={{ marginTop: '8px' }}>
+            <button
+              type="button"
+              onClick={handleAdminLogout}
+              className="admin-nav-item"
+              style={{
+                width: '100%',
+                background: 'none',
+                border: 'none',
+                color: '#f87171',
+                cursor: 'pointer',
+                textAlign: 'left'
+              }}
+            >
+              <LogOut size={16} />
+              <span>Admin Logout</span>
+            </button>
           </li>
         </ul>
       </aside>

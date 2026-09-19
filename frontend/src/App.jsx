@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
@@ -26,6 +26,7 @@ import Contact from './pages/Contact';
 import BrandPage from './pages/BrandPage';
 
 // Admin Pages
+import AdminLogin from './pages/AdminLogin';
 import AdminLayout from './pages/admin/AdminLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminCategories from './pages/admin/AdminCategories';
@@ -36,67 +37,83 @@ import AdminUsers from './pages/admin/AdminUsers';
 import AdminMessages from './pages/admin/AdminMessages';
 import AdminReviews from './pages/admin/AdminReviews';
 
+// Dedicated Layout for Client Website
+const ClientLayout = () => {
+  return (
+    <div className="app-container">
+      <div className="global-flow-bg" aria-hidden="true" />
+      <Navbar />
+      <main className="main-content">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
 function App() {
   return (
     <Router>
       <AuthProvider>
         <CartProvider>
           <WishlistProvider>
-            <div className="app-container">
-              <div className="global-flow-bg" aria-hidden="true" />
-              <Navbar />
-              <main className="main-content">
-                <Routes>
-                  {/* Public Store Routes */}
-                  <Route path="/" element={<Home />} />
-                  <Route path="/products" element={<Products />} />
-                  <Route path="/products/:id" element={<ProductDetails />} />
-                  <Route path="/brand/:brandName" element={<BrandPage />} />
-                  <Route path="/wishlist" element={<Wishlist />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/feedback" element={<Feedback />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
+            <Routes>
+              {/* ========================================================= */}
+              {/* DEDICATED ADMIN PORTAL (ISOLATED - NO CLIENT NAVBAR/FOOTER) */}
+              {/* ========================================================= */}
+              <Route path="/admin/login" element={<AdminLogin />} />
 
-                  {/* User Protected Routes */}
-                  <Route element={<UserRoute />}>
-                    <Route path="/checkout" element={<Checkout />} />
-                    <Route path="/order-success/:id" element={<OrderSuccess />} />
-                    <Route path="/my-orders" element={<MyOrders />} />
-                  </Route>
+              <Route path="/admin" element={<AdminRoute />}>
+                <Route element={<AdminLayout />}>
+                  <Route index element={<AdminDashboard />} />
+                  <Route path="categories" element={<AdminCategories />} />
+                  <Route path="brands" element={<AdminBrands />} />
+                  <Route path="products" element={<AdminProducts />} />
+                  <Route path="orders" element={<AdminOrders />} />
+                  <Route path="users" element={<AdminUsers />} />
+                  <Route path="messages" element={<AdminMessages />} />
+                  <Route path="reviews" element={<AdminReviews />} />
+                </Route>
+              </Route>
 
-                  {/* Admin Protected Routes */}
-                  <Route path="/admin" element={<AdminRoute />}>
-                    <Route element={<AdminLayout />}>
-                      <Route index element={<AdminDashboard />} />
-                      <Route path="categories" element={<AdminCategories />} />
-                      <Route path="brands" element={<AdminBrands />} />
-                      <Route path="products" element={<AdminProducts />} />
-                      <Route path="orders" element={<AdminOrders />} />
-                      <Route path="users" element={<AdminUsers />} />
-                      <Route path="messages" element={<AdminMessages />} />
-                      <Route path="reviews" element={<AdminReviews />} />
-                    </Route>
-                  </Route>
+              {/* ========================================================= */}
+              {/* CLIENT STORE WEBSITE (WITH CLIENT NAVBAR & FOOTER)        */}
+              {/* ========================================================= */}
+              <Route element={<ClientLayout />}>
+                {/* Public Store Routes */}
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/products/:id" element={<ProductDetails />} />
+                <Route path="/brand/:brandName" element={<BrandPage />} />
+                <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/feedback" element={<Feedback />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
 
-                  {/* 404 Fallback */}
-                  <Route
-                    path="*"
-                    element={
-                      <div className="container section-padding" style={{ textAlign: 'center' }}>
-                        <h2>404 — Page Not Found</h2>
-                        <p style={{ color: 'var(--text-muted)', margin: '14px 0' }}>
-                          The requested shoe page does not exist.
-                        </p>
-                      </div>
-                    }
-                  />
-                </Routes>
-              </main>
-              <Footer />
-            </div>
+                {/* Customer Protected Routes */}
+                <Route element={<UserRoute />}>
+                  <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/order-success/:id" element={<OrderSuccess />} />
+                  <Route path="/my-orders" element={<MyOrders />} />
+                </Route>
+
+                {/* 404 Fallback */}
+                <Route
+                  path="*"
+                  element={
+                    <div className="container section-padding" style={{ textAlign: 'center' }}>
+                      <h2>404 — Page Not Found</h2>
+                      <p style={{ color: 'var(--text-muted)', margin: '14px 0' }}>
+                        The requested shoe page does not exist.
+                      </p>
+                    </div>
+                  }
+                />
+              </Route>
+            </Routes>
           </WishlistProvider>
         </CartProvider>
       </AuthProvider>

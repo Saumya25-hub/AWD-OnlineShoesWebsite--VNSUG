@@ -41,14 +41,9 @@ const Login = () => {
     }
   };
 
-  const handleFillDemo = (type) => {
-    if (type === 'admin') {
-      setEmail('admin@shoestore.com');
-      setPassword('admin123');
-    } else {
-      setEmail('rahul@gmail.com');
-      setPassword('user123');
-    }
+  const handleFillDemo = () => {
+    setEmail('rahul@gmail.com');
+    setPassword('user123');
   };
 
   return (
@@ -57,10 +52,10 @@ const Login = () => {
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>👟</div>
           <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--primary)' }}>
-            Welcome Back
+            Customer Sign In
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-            Login to your StepUp Footwear account
+            Login to your StepUp Footwear customer account
           </p>
         </div>
 
@@ -114,29 +109,16 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Demo Viva Shortcuts */}
-        <div style={{ marginTop: '24px', paddingTop: '20px', borderTop: '1px solid var(--border)' }}>
-          <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center', marginBottom: '10px' }}>
-            Demo / Project Evaluation Credentials:
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-            <button
-              type="button"
-              onClick={() => handleFillDemo('user')}
-              className="btn btn-sm btn-outline"
-              style={{ fontSize: '0.78rem' }}
-            >
-              Demo Customer
-            </button>
-            <button
-              type="button"
-              onClick={() => handleFillDemo('admin')}
-              className="btn btn-sm btn-dark"
-              style={{ fontSize: '0.78rem' }}
-            >
-              Store Admin
-            </button>
-          </div>
+        {/* Demo Customer Shortcut */}
+        <div style={{ marginTop: '24px', paddingTop: '18px', borderTop: '1px solid var(--border)' }}>
+          <button
+            type="button"
+            onClick={handleFillDemo}
+            className="btn btn-sm btn-outline btn-block"
+            style={{ fontSize: '0.82rem', borderColor: 'var(--border)' }}
+          >
+            Fill Demo Customer Credentials
+          </button>
         </div>
 
         <div style={{ textAlign: 'center', marginTop: '24px', fontSize: '0.9rem', color: 'var(--text-muted)' }}>

@@ -36,8 +36,8 @@ timeout /t 3 /nobreak >NUL
 echo.
 echo ==============================================================================
 echo [SUCCESS] Opening Online Shoes Store in your browser tabs:
-echo           1. Client Store: http://localhost:5173/
-echo           2. Admin Panel:  http://localhost:5173/admin
+echo           1. Client Store:  http://localhost:5173/
+echo           2. Admin Portal:  http://localhost:5173/admin/login
 echo ==============================================================================
 echo.
 
@@ -48,7 +48,7 @@ start "" "http://localhost:5173/"
 timeout /t 2 /nobreak >NUL
 
 :: Open Admin Panel in tab 2
-start "" "http://localhost:5173/admin"
+start "" "http://localhost:5173/admin/login"
 
 echo Demo Credentials for Store:
 echo   - Customer: rahul@gmail.com        ^| Password: user123

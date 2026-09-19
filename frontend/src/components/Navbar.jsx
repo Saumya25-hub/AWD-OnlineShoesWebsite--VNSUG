@@ -97,20 +97,12 @@ const Navbar = () => {
 
           {user ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0, whiteSpace: 'nowrap' }}>
-              {isAdmin ? (
-                <Link to="/admin" className="btn btn-sm btn-dark" style={{ gap: '4px', whiteSpace: 'nowrap', flexShrink: 0 }}>
-                  <LayoutDashboard size={14} />
-                  <span>Admin Panel</span>
-                </Link>
-              ) : (
-                <Link to="/my-orders" className="btn btn-sm btn-outline" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
-                  My Orders
-                </Link>
-              )}
+              <Link to="/my-orders" className="btn btn-sm btn-outline" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
+                My Orders
+              </Link>
 
               <span className="user-badge-tag" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
-                {user.name.split(' ')[0]}
-                {isAdmin && <span className="admin-tag">Admin</span>}
+                {user.name ? user.name.split(' ')[0] : 'User'}
               </span>
 
               <button

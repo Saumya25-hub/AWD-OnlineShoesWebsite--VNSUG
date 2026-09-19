@@ -144,7 +144,7 @@ const AdminDashboard = () => {
             <table className="table">
               <thead>
                 <tr>
-                  <th>Order ID</th>
+                  <th style={{ width: '60px' }}>#</th>
                   <th>Customer</th>
                   <th>Date</th>
                   <th>Items</th>
@@ -153,9 +153,9 @@ const AdminDashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {stats.recentOrders.map((order) => (
+                {stats.recentOrders.map((order, index) => (
                   <tr key={order._id}>
-                    <td style={{ fontFamily: 'monospace', fontWeight: 600 }}>{order._id.substring(0, 8)}...</td>
+                    <td><strong style={{ color: 'var(--primary)' }}>#{index + 1}</strong></td>
                     <td>
                       <div><strong>{order.shippingAddress?.fullName || order.user?.name || 'Customer'}</strong></div>
                       <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{order.user?.email}</div>

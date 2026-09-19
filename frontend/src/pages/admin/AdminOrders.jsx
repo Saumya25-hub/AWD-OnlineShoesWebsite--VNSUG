@@ -60,7 +60,7 @@ const AdminOrders = () => {
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {orders.map((order) => (
+          {orders.map((order, index) => (
             <div key={order._id} className="card-box" style={{ padding: '20px' }}>
               {/* Order Top Bar */}
               <div
@@ -76,8 +76,8 @@ const AdminOrders = () => {
                 }}
               >
                 <div>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Order ID</div>
-                  <strong style={{ fontFamily: 'monospace' }}>{order._id}</strong>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Order No.</div>
+                  <strong style={{ fontSize: '1.05rem', color: 'var(--primary)' }}>#{index + 1}</strong>
                 </div>
 
                 <div>

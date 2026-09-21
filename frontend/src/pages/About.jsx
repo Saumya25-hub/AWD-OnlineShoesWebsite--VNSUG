@@ -37,26 +37,25 @@ const About = () => {
             Every pair is curated for durability, ergonomic foot cushioning, and premium breathable materials that suit sports, work, and casual wear.
           </p>
         </div>
-      </div>
 
-      {/* Academic Project Info Box */}
-      <div className="card-box" style={{ background: '#f1f5f9', border: '1px solid var(--border)' }}>
-        <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--primary)', marginBottom: '12px' }}>
-          🎓 Academic Project Profile
-        </h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', fontSize: '0.9rem' }}>
-          <div>
-            <strong>Course:</strong> Bachelor of Computer Applications (BCA)
+        <div className="card-box">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
+            <div className="feature-icon-wrap"><CheckCircle size={24} /></div>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--primary)' }}>Authentic Brands</h3>
           </div>
-          <div>
-            <strong>Semester:</strong> Semester-5
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem' }}>
+            We feature authentic designs from leading brands including Nike, Adidas, Puma, Converse, and Skechers with guaranteed quality standards.
+          </p>
+        </div>
+
+        <div className="card-box">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
+            <div className="feature-icon-wrap"><ShoppingBag size={24} /></div>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--primary)' }}>Fast Dispatch</h3>
           </div>
-          <div>
-            <strong>Paper:</strong> AWD (503-01: Advanced Web Development)
-          </div>
-          <div>
-            <strong>Technology Stack:</strong> React, Vite, Node.js, Express, MongoDB
-          </div>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem' }}>
+            Quick order processing, real-time status tracking from pending to delivery, and transparent payment options for every order.
+          </p>
         </div>
       </div>
     </div>

@@ -68,6 +68,9 @@ const AdminDashboard = () => {
           <Link to="/admin/products" className="btn btn-sm btn-primary">
             <PlusCircle size={15} /> Add Shoe Product
           </Link>
+          <Link to="/admin/stock" className="btn btn-sm btn-outline">
+            Manage Stock
+          </Link>
           <Link to="/admin/categories" className="btn btn-sm btn-outline">
             Manage Categories
           </Link>

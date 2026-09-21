@@ -7,7 +7,8 @@ const {
   getProductById,
   createProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  updateProductStock
 } = require('../controllers/productController');
 const { protect, admin } = require('../middleware/authMiddleware');
 const upload = require('../middleware/uploadMiddleware');
@@ -18,6 +19,8 @@ router.get('/brands', getBrands);
 router.route('/')
   .get(getAllProducts)
   .post(protect, admin, upload.single('image'), createProduct);
+
+router.patch('/:id/stock', protect, admin, updateProductStock);
 
 router.route('/:id')
   .get(getProductById)

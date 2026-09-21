@@ -206,6 +206,33 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+// @desc    Quick update product stock
+// @route   PATCH /api/products/:id/stock
+// @access  Private/Admin
+const updateProductStock = async (req, res) => {
+  try {
+    const { stock, addStock } = req.body;
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    if (addStock !== undefined && !isNaN(addStock)) {
+      product.stock = Math.max(0, (product.stock || 0) + Number(addStock));
+    } else if (stock !== undefined && !isNaN(stock)) {
+      product.stock = Math.max(0, Number(stock));
+    } else {
+      return res.status(400).json({ message: 'Stock value is required' });
+    }
+
+    const updatedProduct = await product.save();
+    const populated = await Product.findById(updatedProduct._id).populate('category', 'name');
+    res.json(populated);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllProducts,
   getBrands,
@@ -213,5 +240,6 @@ module.exports = {
   getProductById,
   createProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  updateProductStock
 };

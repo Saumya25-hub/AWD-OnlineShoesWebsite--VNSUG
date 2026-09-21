@@ -32,6 +32,7 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminCategories from './pages/admin/AdminCategories';
 import AdminBrands from './pages/admin/AdminBrands';
 import AdminProducts from './pages/admin/AdminProducts';
+import AdminStock from './pages/admin/AdminStock';
 import AdminOrders from './pages/admin/AdminOrders';
 import AdminUsers from './pages/admin/AdminUsers';
 import AdminMessages from './pages/admin/AdminMessages';
@@ -69,6 +70,7 @@ function App() {
                   <Route path="categories" element={<AdminCategories />} />
                   <Route path="brands" element={<AdminBrands />} />
                   <Route path="products" element={<AdminProducts />} />
+                  <Route path="stock" element={<AdminStock />} />
                   <Route path="orders" element={<AdminOrders />} />
                   <Route path="users" element={<AdminUsers />} />
                   <Route path="messages" element={<AdminMessages />} />

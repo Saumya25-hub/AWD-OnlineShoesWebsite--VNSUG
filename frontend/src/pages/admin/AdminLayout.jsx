@@ -11,7 +11,8 @@ import {
   Star,
   ArrowLeft,
   LogOut,
-  ShieldCheck
+  ShieldCheck,
+  Boxes
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -70,6 +71,15 @@ const AdminLayout = () => {
             >
               <ShoppingBag size={18} />
               <span>Products</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/admin/stock"
+              className={({ isActive }) => (isActive ? 'admin-nav-item active' : 'admin-nav-item')}
+            >
+              <Boxes size={18} />
+              <span>Stock</span>
             </NavLink>
           </li>
           <li>
